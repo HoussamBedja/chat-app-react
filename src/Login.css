@@ -18,12 +18,12 @@
 
 .login > button {
   width: 300px;
-  background-color: #3ea4fb;
+  background-color: #58b6b0;
   color: #eff2f5;
   font-weight: 800;
 }
 
 .login > button:hover {
   background-color: gainsboro;
-  color: #3ea4fb;
+  color: #47948f;
 }

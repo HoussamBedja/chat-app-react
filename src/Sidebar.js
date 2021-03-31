@@ -26,7 +26,7 @@ export default function Sidebar() {
   }, []);
 
   const addChat = () => {
-    const chatName = prompt("Please enter a chat name");
+    const chatName = prompt("Please enter a group chat name");
 
     if (chatName) {
       db.collection("chats").add({
@@ -41,7 +41,7 @@ export default function Sidebar() {
         <Avatar onClick={() => auth.signOut()} src={user.photo} className="sidebar__avatar" />
         <div className="sidebar__input">
           <SearchIcon />
-          <input placeholder="Search"/>
+          <input placeholder="Search" />
         </div>
         <IconButton variant='outlined' className='sidebar__inputButton'>
           <RateReviewOutlined onClick={addChat}/>

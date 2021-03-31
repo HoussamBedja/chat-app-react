@@ -20,6 +20,20 @@ export default function Chat() {
   const elementRef = useRef();
 
 
+  useEffect(() => {
+      db.collection("chats")
+        .doc('xhvf8rtWSaRltBYCf6jc')
+        .collection("messages")
+        .orderBy("timestamp", "asc")
+        .onSnapshot((snapshot) =>
+          setMessages(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          )
+        );
+  }, []);
 
   useEffect(() => {
     if (chatId) {
@@ -37,6 +51,10 @@ export default function Chat() {
         );
     }
   }, [chatId]);
+
+  const AlwaysScrollToBottom = () => {
+    return <div ref={elementRef} />;
+  };
 
 
   const sendMessage = (e) => {
@@ -57,7 +75,7 @@ export default function Chat() {
       elementRef.current.scrollIntoView({
         behavior: "smooth",
         block: "start",
-      });
+      })
     }
   };
 
@@ -76,7 +94,7 @@ export default function Chat() {
           <Message key={id} contents={data} />
         ))}
       </FlipMove>
-      <div ref={elementRef} />
+      <AlwaysScrollToBottom />
       </div>
 
       {/* chat input */}

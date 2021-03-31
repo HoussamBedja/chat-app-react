@@ -23,3 +23,7 @@
   right: 0;
 }
 
+.sidebarChat--active {
+  font-size:x-large;
+}
+
