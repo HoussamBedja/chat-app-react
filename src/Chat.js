@@ -1,7 +1,7 @@
 import { IconButton } from '@material-ui/core';
 import { SendRounded } from '@material-ui/icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import './Chat.css'
 import { selectChatId, selectChatName } from './features/chatSlice';
 import db from './firebase';
@@ -60,7 +60,7 @@ export default function Chat() {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    if (input != '') {
+    if (input !== '') {
       db.collection("chats").doc(chatId).collection("messages").add({
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         message: input,
