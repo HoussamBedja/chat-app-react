@@ -21,21 +21,6 @@ export default function Chat() {
 
 
   useEffect(() => {
-      db.collection("chats")
-        .doc('xhvf8rtWSaRltBYCf6jc')
-        .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setMessages(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              data: doc.data(),
-            }))
-          )
-        );
-  }, []);
-
-  useEffect(() => {
     if (chatId) {
       db.collection("chats")
         .doc(chatId)
